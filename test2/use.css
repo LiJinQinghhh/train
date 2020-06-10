@@ -1,0 +1,10 @@
+body {
+    margin: 0 auto ;
+    max-width: 800px;
+    min-width: 600px;
+}
+body table {
+    width: 100%;
+    border-collapse:collapse;
+    
+}
