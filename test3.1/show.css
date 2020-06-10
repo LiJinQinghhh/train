@@ -36,7 +36,7 @@ html, body {
     font-size: 14px;
     height: 50px;
     line-height: 50px;
-    background-color: brown;
+    background-color: firebrick;
     color: #f2f2f2;
     text-align: center;
 }
@@ -58,7 +58,7 @@ html, body {
     left: calc(50% - 30px);
     height: 5px;
     width: 60px;
-    background-color: brown;
+    background-color: firebrick;
 }
 .show-group {
     display: flex;
@@ -93,7 +93,7 @@ html, body {
     height: 180px;
     padding: 50px 120px;
     border-bottom: solid 1px black;
-    background-color: brown;
+    background-color: firebrick;
     color: #f2f2f2;
 }
 .self-desc img {
