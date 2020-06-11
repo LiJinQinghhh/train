@@ -84,14 +84,14 @@ div img:hover{
     list-style: none;
 }
 .col-li{
-    text-indent: 12px;
-    line-height: 32px;
+    text-indent: 50px;
+    line-height: 40px;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 20px;
 }
 .col-li:not(:last-child ){
     /* width: 180px; */
-    border-bottom: solid 1px black;
+    border-bottom: solid 1px bold;
 }
 .row-div {
     display: inline-block;
@@ -101,7 +101,8 @@ div img:hover{
 }
 .banner-div img {
     display: inline-block;
-    width: 820px;
+    width: 420px;
+    height:400px;
     text-align: center;
 }
 table{
