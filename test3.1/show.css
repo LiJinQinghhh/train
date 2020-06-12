@@ -75,6 +75,15 @@ div img:hover{
     margin-top: 40px;
     
 }
+audio{
+    position: fixed;
+    left: 0;
+    width: 200px;
+    height: 40px;
+    font-size: 12px;
+    line-height: 40px;
+    background-color: indianred;
+}
 .show-item {
     position: relative;
     width: 200px;
