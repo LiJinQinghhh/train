@@ -78,6 +78,10 @@ div img:hover{
     text-align: left;
     left: 0;
 }
+.p1::first-letter {
+    font-size: 40px;
+    color:indianred
+}
 .col-4 {
     width: calc(calc(99% / 24) * 4);
 }
