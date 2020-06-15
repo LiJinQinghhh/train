@@ -15,15 +15,31 @@ div img{
 div img:hover{  
     transform: scale(1.5); /* 鼠标放到图片上的时候图片按比例放大1.5倍   */
 } 
+.row {
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+audio{
+    position: fixed;
+    left: 0;
+    width: 100px;
+    height: 40px;
+    font-size: 12px;
+    line-height: 40px;
+    background-color: firebrick;
+}
 .header {
     position: relative;
     width: 100%;
     height: 50px;
     background-color: firebrick;
+    margin-bottom: 10px;
 }
 .wrap {
     position: relative;
-    padding: 0px 80px;
+    left: calc(50% - 600px);
+    width: 1200px;
     color: #f2f2f2;
 }
 .header div p{
@@ -32,12 +48,15 @@ div img:hover{
     line-height: 50px;
 }
 .left-header {
+    display: inline-block;
+    position: relative;
     font-size: 14px;
-    float: left;
 }
 .right-header {
+    position: absolute;
+    right: 0;
+    display: inline-block;
     font-size: 14px;
-    float: right;
 }
 .footer {
     font-size: 14px;
@@ -49,9 +68,9 @@ div img:hover{
 }
 .info-group {
     position: relative;
-    margin: 20px 0px;
-    display: block;
-    width: 100%;
+    margin: 0px;
+    display: inline-block;
+    width: 1200px;
     text-align: center;
 }
 .info-tite {
@@ -68,31 +87,18 @@ div img:hover{
     background-color: firebrick;
 }
 .show-group {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: center;
     margin-top: 40px;
-    
-}
-audio{
-    position: fixed;
-    left: 0;
-    width: 200px;
-    height: 40px;
-    font-size: 12px;
-    line-height: 40px;
-    background-color: indianred;
 }
 .show-item {
+    display: inline-block;
     position: relative;
-    width: 200px;
+    width: calc(25% - 27px);
     max-height: 320px;
     border: solid 1px grey;
     margin-bottom: 10px;
 }
-.show-item:not(last-child) {
-    margin-right: 20px;
+.show-item:not(:nth-child(4n+0)) {
+    margin-right: 28px;
 }
 .show-item img{
     position: relative;
@@ -106,53 +112,109 @@ audio{
     margin: 5px;
 }
 .self-desc {
-    height: 180px;
-    padding: 50px 120px;
+    position: relative;
+    height: 240px;
+    width: 100%;
     border-bottom: solid 1px black;
     background-color: firebrick;
     color: #f2f2f2;
+    text-align: center;
 }
 .self-desc img {
     display: inline-block;
-    float: right;
+    position: absolute;
+    right: 0px;
+    top: 10px;
     width: 180px;
     height: 180px;
 }
-.self-wrap p {
+.self-wrap {
     position: relative;
+    display: inline-block;
+    width: 1200px;
+    text-align: left;
+    font-size: 16px;
+}
+.self-wrap p {
+    position: absolute;
+    top: 20px;
     display: inline-block;
     font-weight: bold;
     font-size: 20px;
-    padding: 5px 10px;
     max-width: 450px;
-    margin-top: 20px;
-    margin-right: 60px;
 }
-.self-wrap {
-    width: 100%;
-    display: flex;
-    font-size: 16px;
-    padding: 10px 80px;
-    justify-content: center;
-}
+
 a, a:visited, a:link {
     color: white;
 }
-@media (max-width: 800px){
-    .self-desc {
-        padding: 0px;
+@media (min-width:790px) and (max-width: 1250px){
+    .wrap{
+        width: 800px;
+        left: calc(50% - 400px);
     }
-    .self-desc img {
-        display: none;
+    .info-group {
+        width: 800px;
     }
     .self-wrap {
-        padding: 0;
+        width: 800px;
+    }
+    .show-item img {
+        max-width: 160px;
+    }
+}
+@media (max-width: 800px){
+    .wrap{
+        width: 600px;
+        left: calc(50% - 300px);
+    }
+    .info-group {
+        width: 600px;
+    }
+    .self-wrap {
+        width: 600px;
+    }
+    .show-item img {
+        max-width: 120px;
+    }
+    .show-item:not(:nth-child(4n+0)) {
+        margin-right: 28px;
     }
     .self-wrap p {
-        font-size: 12px;
-        padding: 0px 10px;
-        text-indent: 2em;
-        margin: 20px;
+        max-width: 360px;
+        text-indent: 2rem;
+        font-size: 16px;
     }
-     
+}
+@media (max-width: 500px){
+    .wrap{
+        width: 380px;
+        left: calc(50% - 190px);
+    }
+    .info-group {
+        width: 380px;
+    }
+    .self-wrap {
+        width: 380px;
+    }
+    .show-item {
+        width: calc(45% - 27px);
+    }
+    .show-item img {
+        max-width: 110px;
+    }
+    .show-item:not(:nth-child(4n+0)) {
+        margin-right: 0px;
+    }
+    .show-item:nth-child(odd){
+        margin-right: 83px;
+    }
+    .self-wrap p {
+        max-width: 220px;
+        text-indent: 2rem;
+        font-size: 12px;
+    }
+    .self-wrap img {
+        width: 120px;
+        height: 120px;
+    }
 }
