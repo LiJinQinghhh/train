@@ -20,15 +20,6 @@ div img:hover{
     width: 100%;
     text-align: center;
 }
-audio{
-    position: fixed;
-    left: 0;
-    width: 100px;
-    height: 40px;
-    font-size: 12px;
-    line-height: 40px;
-    background-color: firebrick;
-}
 .header {
     position: relative;
     width: 100%;
@@ -51,6 +42,15 @@ audio{
     display: inline-block;
     position: relative;
     font-size: 14px;
+}
+audio{
+    position: fixed;
+    left: 0;
+    width: 90px;
+    height: 30px;
+    font-size: 12px;
+    line-height: 40px;
+    background-color: firebrick;
 }
 .right-header {
     position: absolute;
