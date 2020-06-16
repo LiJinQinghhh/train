@@ -10,7 +10,7 @@ audio{
 .screen_container{
     position: relative;
     width: 1000px;
-    height: 480px;
+    height: 500px;
     margin: 50px auto;
     background: white;
     border-radius: 10px;
@@ -30,16 +30,32 @@ div img{
 div img:hover{  
     transform: scale(1.5); /* 鼠标放到图片上的时候图片按比例放大1.5倍   */
 } 
-
 .screen_toolbar{
-    width: 1000px;
+    width: 600px;
     margin: 20px auto;
     text-align: center;
-    background: white;
 }
 .screen_toolbar:hover {
     color: #E2DFCE;
     border-radius: 8px;
     border: 1px solid #E2DFCE;
     background: rgba(74, 160, 39, 0.6);
+}
+.send,.clear{
+    padding: 5px 20px;
+    display: inline-block;
+    border-radius: 3px;
+    border: 1px solid #e0e0e0;
+    margin: 5px;
+    background: rgba(74, 160, 39, 0.6);
+    color: #fff;
+    cursor: pointer;
+}
+.footer {
+    font-size: 14px;
+    height: 50px;
+    line-height: 50px;
+    background: rgba(74, 160, 39, 0.6);
+    color:black;
+    text-align: center;
 }
