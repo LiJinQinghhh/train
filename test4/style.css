@@ -1,0 +1,45 @@
+audio{
+    position: fixed;
+    left: 0;
+    width: 200px;
+    height: 40px;
+    font-size: 12px;
+    line-height: 40px;
+    background: rgba(74, 160, 39, 0.6);
+}
+.screen_container{
+    position: relative;
+    width: 1000px;
+    height: 480px;
+    margin: 50px auto;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    box-shadow: 2px 2px 16px 2px rgba(0, 0, 0, 0.6);
+    transition: all 0.4s ease-out;
+}
+.screen_container {
+    box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.6);
+    border-radius: 25px;
+}
+div img{  
+    cursor: pointer;  
+    transition: all 0.5s; /* 所有的属性变化在0.5s的时间段内完成 */
+}  
+div img:hover{  
+    transform: scale(1.5); /* 鼠标放到图片上的时候图片按比例放大1.5倍   */
+} 
+
+.screen_toolbar{
+    width: 1000px;
+    margin: 20px auto;
+    text-align: center;
+    background: white;
+}
+.screen_toolbar:hover {
+    color: #E2DFCE;
+    border-radius: 8px;
+    border: 1px solid #E2DFCE;
+    background: rgba(74, 160, 39, 0.6);
+}
