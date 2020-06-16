@@ -64,7 +64,7 @@ audio{
 #dropMenu {
     position: absolute;
     top: 38px;
-    left: -74px;
+    left: -72px;
     display: none;
     list-style: none;
     text-align: center;
@@ -73,18 +73,18 @@ audio{
 #dropMenu li, #dropMenu a{
     display: inline-block;
     padding: 2px 5px;
-    min-width: 80px;
+    min-width: 158px;
     color: white;
     text-decoration: none;
-    background-color: #810014;
+    background-color: firebrick;
 }
 #dropBtn {
     position: relative;
     top: 2px;
     padding: 0px 10px;
-    background-color: #810014;
+    background-color: firebrick;
     border: none;
-    font-size: 24px;
+    font-size: 20px;
     color: white;
 }
 .footer {
@@ -122,7 +122,7 @@ audio{
     display: inline-block;
     position: relative;
     width: calc(25% - 27px);
-    max-height: 320px;
+    max-height: 400px;
     border: solid 1px grey;
     margin-bottom: 10px;
 }
@@ -132,8 +132,7 @@ audio{
 .show-item img{
     position: relative;
     top: 5px;
-    max-width: 180px;
-    max-height: 280px;
+    width: 120px;
 }
 .show-item p {
     font-weight: bold;
@@ -214,7 +213,13 @@ a, a:visited, a:link {
         font-size: 16px;
     }
 }
-@media (max-width: 500px){
+@media (max-width: 670px){
+    .dropDone {
+        display: inline-block;
+    }
+    .common-p, .common-p a {
+        display: none;
+    }
     .wrap{
         width: 380px;
         left: calc(50% - 190px);
