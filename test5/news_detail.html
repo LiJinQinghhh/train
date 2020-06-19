@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./libs/scrollReveal/scrollreveal.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.js"></script>
+    <script src="./libs/vue/vue.js"></script>
+    <link rel="shortcut icon" href="https://res.lancome.com.cn/favicon.ico?version=20200604213240034" type="image/x-icon" />
+    <title>Siren|美丽妖精-品牌动态详情</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css"
+    />
+    <link rel="stylesheet" href="./libs/glide/glide.core.min.css" />
+    <link rel="stylesheet" href="./libs/glide/glide.theme.min.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="sticky">
+        <div class="logo">Siren|美丽妖精</div>
+        <nav>
+          <a href="./index.html">首页</a>
+          <a href="./about.html">品牌介绍</a>
+          <a href="./news.html">品牌动态</a>
+          <i class="fas fa-search"></i>
+        </nav>
+        <div class="burger">
+          <div class="burger-line1"></div>
+          <div class="burger-line2"></div>
+          <div class="burger-line3"></div>
+        </div>
+      </header>
+
+      <div class="content-wrapper">
+        <section class="company-activities-det">
+          <div class="activities-det">
+            <div class="activity-det">
+              <div class="act-image-wrapper-det">
+                <img :src="'https://mjuruankai.com'+article.cover_image" alt="" />
+              </div>
+              <h2 class="act-title-det">{{article.title}}</h2>
+              <div class="meta-det">
+                <p class="data-published-det">
+                  <i class="far fa-calendar"></i>
+                  {{
+                    new Date(article.date_created).getFullYear() +
+                      "-" +
+                      (new Date(article.date_created).getMonth() + 1) +
+                      "-" +
+                      new Date(article.date_created).getDate()
+                  }}
+                </p>
+                <p class="comments-det"><i class="far fa-comments"></i> 33条评论</p>
+              </div>
+              <article v-html="article.content">
+              </article>
+            </div>
+          </div>
+        </section>
+      </div>
+      <footer>
+        <div class="footer-menus">
+          <div class="contact-us">
+            <p class="menu-title">联系我们</p>
+            <p>地址：福建省福州市闽侯县溪源宫路200号闽江学院</p>
+            <p>电话：13645048507</p>
+            <p>传真：13645048507</p>
+            <p>电子邮箱：1099387581@qq.com</p>
+          </div>
+          <div class="service-menu footer-menu">
+            <p class="menu-title">服务概览</p>
+            <ul class="menu-items">
+              <li><a href="#">正品保证</a></li>
+              <li><a href="#">精美包装</a></li>
+              <li><a href="#">顺丰包邮</a></li>
+              <li><a href="#">美妆顾问</a></li>
+            </ul>
+          </div>
+          <div class="service-menu footer-menu">
+            <p class="menu-title">产品展示</p>
+            <ul class="menu-items">
+              <li><a href="#">电脑网页端</a></li>
+              <li><a href="#">移动客户端</a></li>
+            </ul>
+          </div>
+          <div class="service-menu footer-menu">
+            <p class="menu-title">品牌动态</p>
+            <ul class="menu-items">
+              <li><a href="#">新品上市</a></li>
+              <li><a href="#">最新资讯</a></li>
+              <li><a href="https://weibo.com/u/5883221450/home?wvr=5&lf=reg" target="_blank">品牌官微</a></li>
+            </ul>
+          </div>
+          <div class="service-menu footer-menu">
+            <p class="menu-title">帮助与支持</p>
+            <ul class="menu-items">
+              <li><a href="#">帮助中心</a></li>
+              <li><a href="#">联系客服</a></li>
+              <li><a href="#">文档资源</a></li>
+            </ul>
+          </div>
+          <p class="icp-info">闽ICP备1314520号</p>
+          <p class="rights">
+            &copy;Siren|美丽妖精-品牌创始人李金清 版权所有
+          </p>
+          <div class="scrollToTop">
+            <a href="#app"><i class="fas fa-chevron-up"></i></a>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script>
+      new Vue({
+        el:'#app',
+        data(){
+          return{
+            article:""
+          }
+        },
+        created(){
+          this.getArticle()
+        },
+        methods:{
+          async getArticle(){
+            const id = this.getQueryVariable('id')
+            const res =await axios.get(`https://mjuruankai.com/api/web/article_by_id/?id=${id}`);
+            this.article = res.data.list[0].fields
+            this.article.content = this.article.content.replace(/\/images/g,"https://mjuruankai.com/images/")
+          },
+          getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i = 0; i < vars.length; i++) {
+              var pair = vars[i].split("=");
+              if (pair[0] == variable) {
+                return pair[1];
+              }
+            }
+            return false;
+          }
+        }
+      })
+    </script>
+    <script src="./libs/isotope/isotope.pkgd.min.js"></script>
+    <script src="./libs/anime/anime.min.js"></script>
+    <script src="./libs/glide/glide.min.js"></script>
+    <script src="./libs/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
+    <script src="./news.js"></script>
+  </body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./libs/scrollReveal/scrollreveal.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.js"></script>
+    <script src="./libs/vue/vue.js"></script>
+    <link rel="shortcut icon" href="https://res.lancome.com.cn/favicon.ico?version=20200604213240034" type="image/x-icon" />
+    <title>Siren|美丽妖精-品牌动态</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css"
+    />
+    <link rel="stylesheet" href="./libs/glide/glide.core.min.css" />
+    <link rel="stylesheet" href="./libs/glide/glide.theme.min.css" />
+    <link rel="stylesheet" href="style.css" /> 
+  </head>
+  <body>
+    <div id="app">
+      <header class="sticky">
+        <div class="logo">Siren|美丽妖精</div>
+        <nav>
+          <a href="./index.html">首页</a>
+          <a href="./about.html">关于我们</a>
+          <a href="#company-activities">品牌动态</a>
+          <i class="fas fa-search"></i>
+        </nav>
+        <div class="burger">
+          <div class="burger-line1"></div>
+          <div class="burger-line2"></div>
+          <div class="burger-line3"></div>
+        </div>
+      </header>
+
+      <div class="content-wrapper">
+        <section id="company-activities" class="company-activities">
+          <h2 class="title1">品牌动态</h2>
+          <p class="intro">关注品牌动态，获取更多新闻资源</p>
+          <div class="activities">
+            <div
+              class="activity"
+              v-for="(article,index) in articleList"
+              :key="index"
+            >
+              <div class="act-image-wrapper">
+                <img
+                  :src="'https://mjuruankai.com'+article.fields.cover_image"
+                  alt=""
+                />
+              </div>
+              <div class="meta">
+                <p class="data-published">
+                  <i class="far fa-calendar"></i>
+                  {{
+                    new Date(article.fields.date_created).getFullYear() +
+                      "-" +
+                      (new Date(article.fields.date_created).getMonth() + 1) +
+                      "-" +
+                      new Date(article.fields.date_created).getDate()
+                  }}
+                </p>
+                <p class="comments">
+                  <i class="far fa-comments"></i> {{article.fields.like}}条评论
+                </p>
+              </div>
+              <h2 class="act-title">{{article.fields.title}}</h2>
+              <article>
+                {{ replace(article.fields.content.slice(0, 42)) + "..." }}
+              </article>
+              <button class="readmore-btn" @click="read(article.pk)">
+                阅读更多
+              </button>
+            </div>
+          </div>
+          <button class="readmore-btn" @click="more()">
+            阅读更多
+          </button>
+        </section>
+      </div>
+      <footer>
+        <div class="footer-menus">
+          <div class="contact-us">
+            <p class="menu-title">联系我们</p>
+            <p>地址：福建省福州市闽侯县溪源宫路200号闽江学院</p>
+            <p>电话：13645048507</p>
+            <p>传真：13645048507</p>
+            <p>电子邮箱：1099387581@qq.com</p>
+          </div>
+          <div class="service-menu footer-menu">
+            <p class="menu-title">服务概览</p>
+            <ul class="menu-items">
+              <li><a href="#">正品保证</a></li>
+              <li><a href="#">精美包装</a></li>
+              <li><a href="#">顺丰包邮</a></li>
+              <li><a href="#">美妆顾问</a></li>
+            </ul>
+          </div>
+          <div class="service-menu footer-menu">
+            <p class="menu-title">产品展示</p>
+            <ul class="menu-items">
+              <li><a href="#">电脑网页端</a></li>
+              <li><a href="#">移动客户端</a></li>
+            </ul>
+          </div>
+          <div class="service-menu footer-menu">
+            <p class="menu-title">品牌动态</p>
+            <ul class="menu-items">
+              <li><a href="#">新品上市</a></li>
+              <li><a href="#">明星单品</a></li>
+              <li><a href="https://weibo.com/u/5883221450/home?wvr=5&lf=reg" target="_blank">品牌官微</a></li>
+            </ul>
+          </div>
+          <div class="service-menu footer-menu">
+            <p class="menu-title">帮助与支持</p>
+            <ul class="menu-items">
+              <li><a href="#">帮助中心</a></li>
+              <li><a href="#">联系客服</a></li>
+              <li><a href="#">文档资源</a></li>
+            </ul>
+          </div>
+          <p class="icp-info">闽ICP备1314250号</p>
+          <p class="rights">
+            &copy;Siren|美丽妖精-品牌创始人李金清 版权所有
+          </p>
+          <div class="scrollToTop">
+            <a href="#app"><i class="fas fa-chevron-up"></i></a>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data() {
+          return {
+            articleList: [],
+            num:1,
+          };
+        },
+        created() {
+          this.getArticleList();
+        },
+        methods: {
+          async getArticleList() {
+            const res = await axios.get(
+              `https://mjuruankai.com/api/web/article_list/?page=${this.num}`
+            );
+            this.articleList = [...this.articleList,...res.data.list];
+          },
+          replace(str) {
+            let con = str.replace(/\s*/g, ""); //去掉空格
+            let res = con.replace(/<[^>]+>/g, ""); //去掉所有的html标记
+            let res1 = res.replace(/↵/g, ""); //去掉所有的↵符号
+            let res2 = res1.replace(/[\r\n]/g, ""); //去掉回车换行
+            return res2;
+          },
+          read(id){
+            window.location.href=`./news_detail.html?id=${id}`
+          },
+          more(){
+            this.num++;
+            this.getArticleList()
+          }
+        },
+      });
+    </script>
+    <script src="./libs/isotope/isotope.pkgd.min.js"></script>
+    <script src="./libs/anime/anime.min.js"></script>
+    <script src="./libs/glide/glide.min.js"></script>
+    <script src="./libs/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
+    <script src="./news.js"></script>
+  </body>
+</html>
