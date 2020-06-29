@@ -145,3 +145,12 @@ function createIcon(json){
 }
 
 initMap();//创建和初始化地图
+// 加入百度统计
+router.beforeEach((to, from, next) => {
+  if (to.path) {
+    if (window._hmt) {
+      window._hmt.push(['_trackPageview', '/#' + to.fullPath])
+    }
+  }
+  next()
+})
